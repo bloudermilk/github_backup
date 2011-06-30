@@ -21,7 +21,7 @@ authenticated do
     # Repo has already been cloned, just pull
     if Dir.exists? repo_path
       puts "***** Pulling latest from #{repo.name} *****"
-      FileUtils.cd repo_path { %x[git pull] }
+      FileUtils.cd(repo_path) { %x[git pull] }
 
     # Repo hasn't been cloned yet, do that now
     else
