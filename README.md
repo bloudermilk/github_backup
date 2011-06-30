@@ -6,6 +6,7 @@ Easily clone and update all the repositories for a given user or organization
 
 ```
 $ git clone git://github.com/bloudermilk/github_backup.git
+$ cd github_backup
 $ bundle install
 $ ./backup [username] [path]
 ```
