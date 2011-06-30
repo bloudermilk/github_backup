@@ -1,0 +1,32 @@
+#!/usr/bin/env ruby
+
+abort "Usage: backup [username] [path]" if ARGV.length != 2
+
+require "fileutils"
+require "octopi"
+include Octopi
+
+username, backup_path = *ARGV
+
+# Make sure the backup folder is created
+FileUtils.mkdir_p backup_path
+FileUtils.cd backup_path
+
+authenticated do
+  user = User.find(username)
+
+  user.repositories.each do |repo|
+    repo_path = File.join backup_path, repo.name
+
+    # Repo has already been cloned, just pull
+    if Dir.exists? repo_path
+      puts "***** Pulling latest from #{repo.name} *****"
+      FileUtils.cd repo_path { %x[git pull] }
+
+    # Repo hasn't been cloned yet, do that now
+    else
+      puts "***** Cloning #{repo.name} into #{repo_path} *****"
+      %x[git clone #{repo.clone_url}]
+    end
+  end
+end

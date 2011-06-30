@@ -1,0 +1,28 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    api_cache (0.2.3)
+    crack (0.1.8)
+    httparty (0.7.8)
+      crack (= 0.1.8)
+    mechanize (2.0.1)
+      net-http-digest_auth (>= 1.1.1, ~> 1.1)
+      net-http-persistent (~> 1.8)
+      nokogiri (~> 1.4)
+      webrobots (>= 0.0.9, ~> 0.0)
+    net-http-digest_auth (1.1.1)
+    net-http-persistent (1.8)
+    nokogiri (1.4.6)
+    octopi (0.4.4)
+      api_cache
+      httparty (>= 0.4.5)
+      mechanize (>= 0.9.3)
+      nokogiri (>= 1.3.1)
+    webrobots (0.0.9)
+      nokogiri (>= 1.4.4)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  octopi (~> 0.4.4)
